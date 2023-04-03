@@ -42,8 +42,6 @@ export default function Category() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  console.log(data);
-
   return (
     <div>
       <h2>{data.category.data.attributes.name}</h2>

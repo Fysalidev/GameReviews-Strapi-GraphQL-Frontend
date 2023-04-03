@@ -11,6 +11,14 @@ const REVIEW = gql`
           title
           rating
           body
+          categories {
+            data {
+              id
+              attributes {
+                name
+              }
+            }
+          }
         }
       }
     }
@@ -30,7 +38,9 @@ export default function ReviewDetails() {
     <div className="review-card">
       <div className="rating">{data.review.data.attributes.rating}</div>
       <h2>{data.review.data.attributes.title}</h2>
-      <small>console list</small>
+      {data.review.data.attributes.categories.data.map((category) => (
+        <small key={category.id}>{category.attributes.name}</small>
+      ))}
       <p>{data.review.data.attributes.body}</p>
     </div>
   );
